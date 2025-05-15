@@ -1,0 +1,3 @@
+Time: 2025-05-15T20-32-43
+Type: email_detected
+Description: Email found: {'message': "Hello, my credentials are stored in test@mail.com and here is my test card 1234567890123456. Please don't scam me."}

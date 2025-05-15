@@ -1,0 +1,6 @@
+2025-05-15 20:31:40,477 - INFO - Processing data: {'message': 'My secret password is 1234567890 and my email is test@mail.com'}
+2025-05-15 20:32:43,301 - INFO - Processing data: {'message': "Hello, my credentials are stored in test@mail.com and here is my test card 1234567890123456. Please don't scam me."}
+2025-05-15 21:00:58,977 - INFO - Processing data: {'message': 'my secret password is 1234567890, email test@mail.com'}
+2025-05-15 21:03:13,502 - INFO - Processing data: {'message': 'email: test@mail.com, card: 1234567890'}
+2025-05-15 21:13:02,849 - INFO - Processing data: {'message': 'my secret password is 1234567890, email test@mail.com'}
+2025-05-15 21:37:35,166 - INFO - Processing data: {'message': 'my password is 123 and email test@mail.com'}

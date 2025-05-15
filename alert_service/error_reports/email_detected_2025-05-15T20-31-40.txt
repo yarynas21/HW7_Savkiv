@@ -1,0 +1,3 @@
+Time: 2025-05-15T20-31-40
+Type: email_detected
+Description: Email found: {'message': 'My secret password is 1234567890 and my email is test@mail.com'}
