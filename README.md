@@ -272,3 +272,46 @@ Celery worker --------------→ alert_service
 - InfluxDB (logging)
 - Docker Compose
 - Bash, curl (manual testing)
+
+## Task 4: Resource Scaling Estimation
+
+To ensure responsiveness under load, we define a scaling strategy based on the number of concurrent users interacting with the system.
+
+---
+
+### 🧮 Load-based Scaling Strategy
+
+| Simultaneous Users | Strategy                                                                 |
+|--------------------|--------------------------------------------------------------------------|
+| **10 users**       | Default setup. No scaling needed.                                        |
+|                    | - 1 `api_service` container                                              |
+|                    | - 1 `alert_service` container                                            |
+|                    | - 1 Celery worker                                                        |
+|                    | - Redis and InfluxDB at default config                                   |
+|                    | - Logs and alerts processed immediately                                  |
+|                    | ✅ Suitable for development and testing environments                     |
+|                    |                                                                          |
+| **50 users**       | Scale horizontally.                                                      |
+|                    | - Increase Celery workers to 3–5 replicas                                |
+|                    | - Allocate more memory to Redis (optional tuning)                        |
+|                    | - Mount logs to persistent volumes                                       |
+|                    | - Optionally introduce load balancing for `api_service` (e.g., NGINX)    |
+|                    | ✅ Ensures throughput and avoids task queuing bottlenecks                 |
+|                    |                                                                          |
+| **100+ users**     | High-availability and distributed system.                                |
+|                    | - Deploy in Kubernetes or Docker Swarm                                   |
+|                    | - Use NGINX load balancer in front of multiple `api_service` instances   |
+|                    | - Enable autoscaling for Celery workers                                  |
+|                    | - Externalize InfluxDB to managed service (e.g., InfluxDB Cloud)         |
+|                    | - Use monitoring/alerting tools (Grafana, Prometheus)                    |
+|                    | - Log rotation & centralized log storage (e.g., Loki, Fluentd)           |
+|                    | ✅ Ensures reliability under production load                              |
+
+---
+
+### 📌 Summary
+
+- The architecture is scalable horizontally by increasing replicas of workers and services.
+- Celery + Redis allows distributed background task processing.
+- InfluxDB supports high-write loads and can be scaled separately if needed.
+- For production-scale use, container orchestration and external logging/monitoring are essential.
